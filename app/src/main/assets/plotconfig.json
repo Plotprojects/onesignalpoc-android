@@ -1,0 +1,5 @@
+{
+  "publicToken": "PUBLIC_TOKEN",
+  "enableOnFirstRun": true,
+  "debug": true
+}

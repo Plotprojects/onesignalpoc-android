@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.plotprojects.poc.onesignalpoc"
+        minSdkVersion 22
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    defaultConfig{
+        manifestPlaceholders = [onesignal_app_id: "YOUR_ONE_SIGNAL_APP_ID",
+                                // Project number pulled from dashboard, local value is ignored.
+                                onesignal_google_project_number: "YOUR_GOOGLE_PROJECT_NUMBER"]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.onesignal:OneSignal:[3.6.2, 3.99.99]'
+    compile 'com.plotprojects:plot-android:2.3.0-beta'
+
+    compile 'com.google.firebase:firebase-core:11.2.2'
+    compile 'com.google.firebase:firebase-messaging:11.2.2'
+
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+}
+
+apply plugin: "com.google.gms.google-services"
