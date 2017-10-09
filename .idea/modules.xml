@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/OneSignalPlotPOC.iml" filepath="$PROJECT_DIR$/OneSignalPlotPOC.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onesignalpoc2.iml" filepath="$PROJECT_DIR$/onesignalpoc2.iml" />
     </modules>
   </component>
 </project>
