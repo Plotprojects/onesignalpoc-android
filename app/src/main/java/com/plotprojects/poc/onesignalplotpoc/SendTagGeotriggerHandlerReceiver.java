@@ -6,6 +6,9 @@ import com.onesignal.OneSignal;
 import com.plotprojects.retail.android.Geotrigger;
 import com.plotprojects.retail.android.GeotriggerHandlerReceiver;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 public class SendTagGeotriggerHandlerReceiver extends GeotriggerHandlerReceiver {
@@ -17,9 +20,15 @@ public class SendTagGeotriggerHandlerReceiver extends GeotriggerHandlerReceiver 
 
         for (Geotrigger geotrigger : geotriggers) {
             String data = geotrigger.getData();
-            String now = String.valueOf(System.currentTimeMillis());
-            OneSignal.sendTag(data,now);
-            Log.d(LOG_TAG, "Sent tag " + "(" + data + ", " + now + ")");
+            try {
+                JSONObject jObject = new JSONObject(data);
+                String key = jObject.getString("key");
+                String now = String.valueOf(System.currentTimeMillis());
+                OneSignal.sendTag(key,now);
+                Log.d(LOG_TAG, "Sent tag " + "(" + key + ", " + now + ")");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
         return geotriggers;
     }
